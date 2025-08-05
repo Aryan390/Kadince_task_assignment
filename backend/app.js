@@ -34,7 +34,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://kadince-task-assignment.vercel.app",
     credentials: true,
   })
 );
