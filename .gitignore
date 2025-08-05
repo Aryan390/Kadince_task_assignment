@@ -1,0 +1,62 @@
+# Node.js dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Env files
+.env
+.env.local
+.env.*.local
+
+# Editor-specific
+.vscode/
+.idea/
+*.swp
+
+# Test coverage
+coverage/
+
+# Optional npm cache directory
+.npm/
+
+# Next.js
+.next/
+
+# Parcel-bundler cache
+.cache/
+
+# Output of 'npm pack'
+*.tgz
+
+# Mac folder attributes
+.AppleDouble
+.LSOverride
+
+# Windows thumbnail cache
+ehthumbs.db
+
+# Svelte
+.svelte-kit/
+
+# Storybook
+.out/
+
+# Misc
+*.log
