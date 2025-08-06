@@ -1,1 +1,1 @@
-export const BASE_URL = "https://3.134.86.71/api/v1";
+export const BASE_URL = "https://taskaster-a8b8f7750011.herokuapp.com/api/v1";
