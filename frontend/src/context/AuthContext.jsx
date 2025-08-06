@@ -26,7 +26,9 @@ export const AuthProvider = ({ children }) => {
 
   const signup = async (credentials) => {
     try {
-      const response = await axiosInstance.post("/users/signup", credentials);
+      const response = await axiosInstance.post("/users/signup", credentials, {
+        withCredentials: true,
+      });
 
       // Handle successful registration response
       if (response.data && response.data.error) {
