@@ -17,6 +17,7 @@ const Navbar = ({ userInfo }) => {
   const onLogout = async () => {
     try {
       const response = await axiosInstance.get("/users/logout");
+      localStorage.setItem("signedIn", "No");
       navigate("/login");
     } catch (err) {
       console.log("logout failed", err);

@@ -6,8 +6,13 @@ import Cookies from "js-cookie";
 const ProtectedRoute = ({ children }) => {
   const cookieData = Cookies.get("jwt");
   const location = useLocation();
+  const signedInStatus = localStorage?.getItem("signedIn");
   // If user is not authenticated, redirect to login
-  if (!cookieData && cookieData === "loggedout") {
+  if (
+    (!cookieData && cookieData === "loggedout") ||
+    !signedInStatus ||
+    signedInStatus === "No"
+  ) {
     // Save the attempted location for redirecting after login
     return <Navigate to="/login" state={{ from: location }} replace />;
   }

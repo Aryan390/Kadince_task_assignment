@@ -16,10 +16,12 @@ export const AuthProvider = ({ children }) => {
       });
       if (response.data?.data?.user) {
         setUserInfo(response.data.data.user);
+        localStorage.setItem("signedIn", "Yes");
         navigate("/dashboard");
       }
     } catch (error) {
       console.error("Login failed", error);
+      localStorage.setItem("signedIn", "No");
       throw error;
     }
   };
@@ -31,17 +33,18 @@ export const AuthProvider = ({ children }) => {
       });
 
       // Handle successful registration response
-      if (response.data && response.data.error) {
-        setError(response.data.message);
+      if (response.data?.data?.user) {
+        setUserInfo(response.data.data.user);
+        localStorage.setItem("signedIn", "Yes");
+        navigate("/dashboard");
         return;
       }
-
-      navigate("/dashboard");
     } catch (error) {
       if (error.response?.data?.message) {
         setError(error.response.data.message);
       } else {
         setError("An unexpected error occurred. Please try again.");
+        localStorage.setItem("signedIn", "No");
       }
     }
   };
@@ -60,6 +63,15 @@ export const AuthProvider = ({ children }) => {
   };
   useEffect(() => {
     console.log("from second useEffect");
+    try {
+      const signedInStatus = localStorage?.getItem("signedIn");
+      if (!signedInStatus || signedInStatus === "No") {
+        console.log("some");
+        localStorage.setItem("signedIn", "No");
+      }
+    } catch (err) {
+      setError("An unexpected error occured. Please try again.");
+    }
     getUserInfo();
   }, []);
 
